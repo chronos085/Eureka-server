@@ -1,0 +1,28 @@
+info:
+  component: Discovery Server
+
+spring:
+  application:
+    name: service-discovery
+
+server.port: ${PORT:8761}
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: eureka
+    password: eureka
+    role: SYSTEM
+
+eureka:
+  server:
+    enable-self-preservation: true
+    wait-time-in-ms-when-sync-empty: 0
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
